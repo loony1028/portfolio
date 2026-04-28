@@ -185,7 +185,16 @@ function StackCard({
       }}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.4, delay }}
+      transition={{ 
+        duration: 0.4, 
+        y: {
+          duration: 2,
+          repeat: isOtherCategoryHovered ? 0 : Infinity,
+          ease: 'easeInOut',
+        },
+        opacity: { duration: 0.3 },
+        scale: { duration: 0.2 }, delay 
+      }}
       viewport={{ once: true }}
       onMouseEnter={() => {
         setIsHovered(true);
@@ -199,15 +208,6 @@ function StackCard({
         y: isOtherCategoryHovered ? 0 : [0, -5, 0],
         opacity: isOtherCategoryHovered ? 0.3 : 1,
         scale: isHovered ? 1.05 : 1,
-      }}
-      transition={{
-        y: {
-          duration: 2,
-          repeat: isOtherCategoryHovered ? 0 : Infinity,
-          ease: 'easeInOut',
-        },
-        opacity: { duration: 0.3 },
-        scale: { duration: 0.2 },
       }}
     >
       {/* Animated background glow */}
